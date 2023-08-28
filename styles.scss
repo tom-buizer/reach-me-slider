@@ -1,0 +1,35 @@
+body {
+  overflow: hidden;
+}
+
+$colors: #2f4b26, #3e885b, #85bda6, #bedcfe, #c0d7bb;
+
+.carousel {
+  position: absolute;
+  left: calc(50% - 150px);
+  top: calc((100vh - 400px) / 2);
+  transform-origin: 150px 2500px;
+  will-change: transform;
+  .wrapper {
+    position: absolute;
+    height: 100vh;
+    transform-origin: 150px 2500px;
+    @for $i from 0 through 36 {
+      &:nth-child(#{$i}) {
+        transform: rotate(#{$i * 10}deg);
+        div {
+          background: nth($colors, random(length($colors)));
+        }
+      }
+    }
+    &:active {
+      cursor: grabbing;
+    }
+    div {
+      width: 300px;
+      height: 400px;
+      border-radius: 5px;
+      background: currentColor;
+    }
+  }
+}
